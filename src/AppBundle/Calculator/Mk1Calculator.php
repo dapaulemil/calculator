@@ -6,7 +6,7 @@ namespace AppBundle\Calculator;
 
 use AppBundle\Model\Change;
 
-class MK1Calculator implements CalculatorInterface
+class Mk1Calculator implements CalculatorInterface
 {
 
     /**
@@ -23,7 +23,11 @@ class MK1Calculator implements CalculatorInterface
     public function getChange(int $amount): ?Change
     {
         $change = new Change();
-        $change->coin1 = $amount; // Ici le nombre de pièce de un sera égal au montant saisi.
-        return $change;
+        $change->coin1 = $amount;
+        if ($amount <= 0){
+            return null;
+        }
+
+        return  $change;
     }
 }

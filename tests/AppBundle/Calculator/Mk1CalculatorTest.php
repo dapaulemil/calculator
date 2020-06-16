@@ -7,7 +7,7 @@ use AppBundle\Model\Change;
 use AppBundle\Calculator\Mk1Calculator;
 use PHPUnit\Framework\TestCase;
 
-class Mk1CalculatorTest extends TestCase
+class MK1CalculatorTest extends TestCase
 {
     /**
      * @var CalculatorInterface
@@ -29,5 +29,11 @@ class Mk1CalculatorTest extends TestCase
         $change = $this->calculator->getChange(2);
         $this->assertInstanceOf(Change::class, $change);
         $this->assertEquals(2, $change->coin1);
+    }
+
+    public function testGetChangeImpossible()
+    {
+        $change = $this->calculator->getChange(-2);
+        $this->assertNull($change);
     }
 }
